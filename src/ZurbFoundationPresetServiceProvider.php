@@ -2,7 +2,7 @@
 namespace LaravelFrontendPresets\ZurbFoundationPreset;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Foundation\Console\PresetCommand;
+use Laravel\Ui\UiCommand;
 
 class ZurbFoundationPresetServiceProvider extends ServiceProvider
 {
@@ -13,13 +13,13 @@ class ZurbFoundationPresetServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        PresetCommand::macro('foundation', function ($command) {
+        UiCommand::macro('foundation', function ($command) {
             ZurbFoundationPreset::install(false);
             $command->info('Foundation scaffolding installed successfully.');
             $command->comment('Please run "npm install && npm run dev" to compile your fresh scaffolding.');
         });
 
-        PresetCommand::macro('foundation-auth', function ($command) {
+        UiCommand::macro('foundation-auth', function ($command) {
             ZurbFoundationPreset::install(true);
             $command->info('Foundation scaffolding with Auth views installed successfully.');
             $command->comment('Please run "npm install && npm run dev" to compile your fresh scaffolding.');
